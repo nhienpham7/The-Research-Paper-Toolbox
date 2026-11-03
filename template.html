@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Coming Soon | Research Paper Toolbox</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .coming-soon-wrapper {
+            margin-top: 1rem;
+        }
+
+        .title-container {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .module-heading-highlight {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            background-color: var(--color-accent-soft);
+            padding: 0.15rem 0.5rem;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.2rem;
+        }
+
+        .module-heading-highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        .coming-soon-desc {
+            font-size: 1.15rem;
+            color: var(--color-text);
+            margin: 1.5rem 0 2rem 0;
+            line-height: 1.6;
+        }
+
+        .btn-home {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-home:hover {
+            background-color: var(--color-primary);
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Accessibility skip link-->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!--Global Header-->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="homepage.html" class="site-brand" aria-label="Research Paper Toolbox Homepage">
+                <span class="brand-icon" aria-hidden="true">📚</span>
+                <span class="brand-title">Research Paper Toolbox</span>
+            </a>
+
+            <nav class="site-nav" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li><a href="template.html#topic" class="nav-link" id="nav-topic">Topic</a></li>
+                    <li><a href="research.html" class="nav-link">Research</a></li>
+                    <li><a href="data.html" class="nav-link">Data</a></li>
+                    <li><a href="template.html#references" class="nav-link" id="nav-references">References</a></li>
+                    <li><a href="template.html#style" class="nav-link" id="nav-style">Style</a></li>
+                    <li><a href="template.html#layout" class="nav-link" id="nav-layout">Layout</a></li>
+                    <li><a href="template.html#modality" class="nav-link" id="nav-modality">Modality</a></li>
+                    <li><a href="template.html#professionalization" class="nav-link" id="nav-professionalization">Professionalization</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="module-page">
+        <!--Breadcrumb navigation-->
+        <nav class="breadcrumbs" aria-label="Breadcrumbs">
+            <ol>
+                <li><a href="homepage.html">Home</a></li>
+                <li id="breadcrumb-current" aria-current="page">Topic</li>
+            </ol>
+        </nav>
+
+        <section class="coming-soon-wrapper">
+            <div class="title-container">
+                <h1 id="module-heading" class="module-heading-highlight">Topic</h1>
+            </div>
+
+            <p class="coming-soon-desc">
+                This module is coming soon. The lessons will follow the same format as Research and Data.
+            </p>
+
+            <a href="homepage.html" class="btn-home">Back to home</a>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Research Paper Toolbox. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const moduleMap = {
+            'topic': 'Topic',
+            'references': 'References',
+            'style': 'Style',
+            'layout': 'Layout',
+            'modality': 'Modality',
+            'professionalization': 'Professionalization'
+        };
+
+        function renderModule() {
+            // Get current anchor from URL (defaults to topic if none or invalid)
+            const hash = window.location.hash.replace('#', '').toLowerCase();
+            const key = moduleMap[hash] ? hash : 'topic';
+            const name = moduleMap[key];
+
+            // Update text elements
+            document.getElementById('module-heading').textContent = name;
+            document.getElementById('breadcrumb-current').textContent = name;
+            document.title = `${name} | Research Paper Toolbox`;
+
+            // Clear previous active states on navigation links
+            document.querySelectorAll('.site-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                link.removeAttribute('aria-current');
+            });
+
+            // Set current module to active
+            const activeNav = document.getElementById(`nav-${key}`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+                activeNav.setAttribute('aria-current', 'page');
+            }
+        }
+
+        // Listen for page load and hash changes when clicking header links
+        window.addEventListener('DOMContentLoaded', renderModule);
+        window.addEventListener('hashchange', renderModule);
+    </script>
+</body>
+
+</html>

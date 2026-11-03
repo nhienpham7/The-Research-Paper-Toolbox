@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module: Data Preparation & Statistical Analysis | Research Paper Toolbox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!--Accessibility skip link-->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!--Global Header-->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="homepage.html" class="site-brand" aria-label="Research Paper Toolbox Homepage">
+                <span class="brand-icon" aria-hidden="true">📚</span>
+                <span class="brand-title">Research Paper Toolbox</span>
+            </a>
+
+            <nav class="site-nav" aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li><a href="template.html#topic" class="nav-link">Topic</a></li>
+                    <li><a href="research.html" class="nav-link">Research</a></li>
+                    <li><a href="data.html" class="nav-link">Data</a></li>
+                    <li><a href="template.html#references" class="nav-link">References</a></li>
+                    <li><a href="template.html#style" class="nav-link">Style</a></li>
+                    <li><a href="template.html#layout" class="nav-link">Layout</a></li>
+                    <li><a href="template.html#modality" class="nav-link">Modality</a></li>
+                    <li><a href="template.html#professionalization" class="nav-link">Professionalization</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="module-page">
+        <!--Breadcrumb navigation-->
+        <nav class="breadcrumbs" aria-label="Breadcrumbs">
+            <ol>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+            </ol>
+        </nav>
+
+        <header class="lesson-header">
+            <h1>Organizing and Analyzing Quantitative Research Data</h1>
+            <p class="lead-text">
+                This instructional module guides graduate researchers and advanced students through cleaning,
+                structuring, and screening raw experimental datasets before migrating them into dedicated statistical
+                software.
+            </p>
+        </header>
+
+        <!--Course Competencies & Prerequisites Card Grid-->
+        <section class="lesson-overview-grid" aria-label="Lesson Details">
+            <div class="overview-card">
+                <h2>Core Competencies You Will Develop</h2>
+                <ul class="check-list">
+                    <li>Clean and standardize tabular raw data in Excel for systematic inquiry.</li>
+                    <li>Isolate categorical factors by engineering binary/dichotomous variables (dummy coding).</li>
+                    <li>Compute descriptive summaries using the Excel Analysis ToolPak.</li>
+                    <li>Import refined datasets into statistical software (PASW/SPSS) for inferential testing.</li>
+                </ul>
+            </div>
+
+            <div class="overview-card">
+                <h2>Prerequisites & Technical Requirements</h2>
+                <div class="prereq-block">
+                    <h3>Software Required:</h3>
+                    <ul>
+                        <li>Microsoft Excel (with Analysis ToolPak enabled)</li>
+                        <li>PASW / IBM SPSS Statistics (or campus lab access)</li>
+                    </ul>
+                </div>
+                <div class="prereq-block">
+                    <h3>Foundational Concepts:</h3>
+                    <ul>
+                        <li>Basic spreadsheet manipulation and cell referencing</li>
+                        <li>Independent vs. dependent variable identification</li>
+                        <li>Elementary statistical terms (mean, variance, distribution)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--Internal Table of Contents-->
+        <nav class="module-contents" aria-label="Module sections">
+            <h2>Lesson Outline</h2>
+            <ol>
+                <li><a href="#format-data-for-analysis">Data Standardization and Dummy Coding</a></li>
+                <li><a href="#run-descriptive-statistics">Generating Descriptive Summaries in Excel</a></li>
+                <li><a href="#run-inferential-statistics">Performing Inferential Tests in PASW/SPSS</a></li>
+            </ol>
+        </nav>
+
+        <!--Section 1-->
+        <section id="format-data-for-analysis" class="lesson-section">
+            <h2>1. Data Standardization and Dummy Coding</h2>
+
+            <p>
+                Begin by opening the companion workbook:
+                <a href="tutorial/tutorial_spreadsheet.xlsx" class="download-link" download>
+                    <span class="file-icon" aria-hidden="true">📥</span>
+                    Download sample dataset (<code>data-lesson-tutorial.xlsx</code>)
+                </a>.
+            </p>
+
+            <ol class="step-guide">
+                <li>
+                    <strong>Define strict variable names:</strong> In the <code>Raw_Dataset</code> tab, verify that Row
+                    1 contains only unique variable names. Replace <code>4tutorial_types</code> with
+                    <code>tutorial_types</code> (variable headers must start with a letter and avoid special
+                    characters).
+                </li>
+                <li>
+                    <strong>Use descriptive, unambiguous labels:</strong> Replace ambiguous headers such as
+                    <code>use</code> and <code>useful</code> with <code>perc_ease_of_use</code> and
+                    <code>perc_usefulness</code> respectively.
+                </li>
+            </ol>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig3.png"
+                    alt="Excel worksheet with clear, standardized variable headers in the first row.">
+                <figcaption><strong>Figure 1:</strong> Standardized column headings with participant observations
+                    arranged row-by-row beneath them.</figcaption>
+            </figure>
+
+            <ol class="step-guide" start="3">
+                <li>
+                    <strong>Enforce consistent input conventions:</strong> In the <code>gender</code> column, normalize
+                    values so that entries like <code>female</code> are coded consistently as <code>F</code>.
+                </li>
+                <li>
+                    <strong>Decompose compound variables:</strong> When columns contain aggregated responses (such as
+                    <code>tasks_completed</code> storing <code>Y/Y/N</code>), split them into atomic attributes:
+                    <code>task1</code>, <code>task2</code>, and <code>task3</code>. Once validated, remove the redundant
+                    composite column.
+                </li>
+            </ol>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig2.png"
+                    alt="Excel worksheet displaying normalized inputs and decomposed task columns.">
+                <figcaption><strong>Figure 2:</strong> Decomposed atomic metrics ensuring consistent data integrity
+                    across all rows.</figcaption>
+            </figure>
+
+            <aside class="callout callout-info">
+                <h3>Statistical Principle: Dichotomous Coding</h3>
+                <p>
+                    Recoding categorical factors into binary indicator variables (<kbd>0</kbd> = Absent / No,
+                    <kbd>1</kbd> = Present / Yes) enables linear models and non-parametric algorithms to isolate the
+                    independent effects of discrete levels (e.g., comparing <em>low experience</em> against <em>high
+                        experience</em>).
+                </p>
+            </aside>
+
+            <ol class="step-guide" start="5">
+                <li>
+                    <strong>Generate the analysis sheet:</strong> Duplicate <code>Raw_Dataset</code> to a new tab named
+                    <code>Formatted_Data</code>.
+                </li>
+                <li>
+                    <strong>Expand categorical values into binary columns:</strong> Use <kbd>Insert</kbd> &gt;
+                    <kbd>Columns</kbd> to add columns for each level in nominal categories (e.g.,
+                    <code>tutorial_types</code>, <code>gender</code>, <code>exp_level</code>).
+                </li>
+                <li>
+                    <strong>Recode values:</strong> Using <kbd>Edit</kbd> &gt; <kbd>Replace</kbd> (<kbd>Ctrl+H</kbd> /
+                    <kbd>Cmd+H</kbd>), convert values to binary <kbd>1</kbd> and <kbd>0</kbd>.
+                </li>
+            </ol>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig3 (1).png"
+                    alt="Excel worksheet with dummy-coded 1 and 0 values for categorical variables.">
+                <figcaption><strong>Figure 3:</strong> Completed <code>Formatted_Data</code> worksheet with binary-coded
+                    factors ready for statistical software.</figcaption>
+            </figure>
+        </section>
+
+        <!--Section 2-->
+        <section id="run-descriptive-statistics" class="lesson-section">
+            <h2>2. Generating Descriptive Summaries in Excel</h2>
+
+            <aside class="callout callout-tip">
+                <h3>Diagnostic Observation</h3>
+                <p>
+                    Inspect dispersion before hypothesis testing. If <code>perc_enjoy</code> displays high central
+                    tendency while <code>perc_usefulness</code> exhibits severe variance, explore whether user
+                    engagement is decoupled from utility.
+                </p>
+            </aside>
+
+            <ol class="step-guide">
+                <li>
+                    <strong>Arrange continuous data:</strong> Group continuous numerical columns (such as
+                    <code>perc_enjoy</code>, <code>perc_usefulness</code>, and <code>perc_ease_of_use</code>) into
+                    contiguous columns.
+                </li>
+                <li>
+                    <strong>Enable the Analysis ToolPak:</strong> Navigate to <kbd>Tools</kbd> &gt;
+                    <kbd>Add-Ins...</kbd>, check <strong>Analysis ToolPak</strong>, and click <kbd>OK</kbd>.
+                </li>
+                <li>
+                    <strong>Execute Descriptive Statistics:</strong> Navigate to <kbd>Tools</kbd> &gt; <kbd>Data
+                        Analysis</kbd>, choose <strong>Descriptive Statistics</strong>, enter your numeric range (e.g.,
+                    <code>H2:J26</code>), check <strong>Summary Statistics</strong>, and output to a new tab named
+                    <code>Descriptive_Stats</code>.
+                </li>
+            </ol>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig4.png"
+                    alt="Descriptive statistics summary table in Excel showing mean, standard error, median, and variance.">
+                <figcaption><strong>Figure 4:</strong> Summary output generated in <code>Descriptive_Stats</code>.
+                    Re-label column heads with their respective variable names.</figcaption>
+            </figure>
+        </section>
+
+        <!--Section 3-->
+        <section id="run-inferential-statistics" class="lesson-section">
+            <h2>3. Performing Inferential Tests in PASW/SPSS</h2>
+
+            <p>
+                Launch PASW (SPSS). From the prompt screen, select <kbd>Open an existing data source</kbd> &gt;
+                <kbd>More Files...</kbd>. Set the format dropdown to <strong>Excel (*.xls, *.xlsx)</strong>, browse to
+                your file, and import the <code>Formatted_Data</code> worksheet.
+            </p>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig5.png"
+                    alt="PASW Analyze menu detailing parametric, non-parametric, and regression testing options.">
+                <figcaption><strong>Figure 5:</strong> The primary analytical suites in PASW are grouped under the
+                    <kbd>Analyze</kbd> top menu.
+                </figcaption>
+            </figure>
+
+            <aside class="callout callout-info">
+                <h3>Methodology Check</h3>
+                <p>
+                    Always confirm variable scaling (nominal, ordinal, interval, or ratio) and distribution normality
+                    before choosing a test. For non-normally distributed samples comparing k-independent groups,
+                    non-parametric procedures like Kruskal-Wallis are recommended.
+                </p>
+            </aside>
+
+            <ol class="step-guide">
+                <li>
+                    <strong>Launch Kruskal-Wallis:</strong> Navigate to <kbd>Analyze</kbd> &gt; <kbd>Nonparametric
+                        Tests</kbd> &gt; <kbd>K Independent Samples...</kbd>.
+                </li>
+                <li>
+                    <strong>Assign variables:</strong> Move <code>perc_usefulness</code> to the <strong>Test Variable
+                        List</strong> (dependent measure) and <code>free_play</code> to the <strong>Grouping
+                        Variable</strong> field (independent measure).
+                </li>
+                <li>
+                    <strong>Set group range:</strong> Click <kbd>Define Range...</kbd>, enter <kbd>0</kbd> for Minimum
+                    and <kbd>1</kbd> for Maximum, then click <kbd>Continue</kbd>.
+                </li>
+            </ol>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig6.png"
+                    alt="K-Independent Samples dialog showing test variable and grouping variable assignment.">
+                <figcaption><strong>Figure 6:</strong> Specifying grouping bounds and test variables within the
+                    non-parametric analysis dialog.</figcaption>
+            </figure>
+
+            <p>
+                Click <kbd>OK</kbd> to execute the computation. In the Output Viewer, review your test statistic,
+                degrees of freedom, and asymptotic significance ($p$-value).
+            </p>
+
+            <figure class="lesson-figure">
+                <img src="illustrations/datalesson_fig7.png"
+                    alt="SPSS Output Viewer showing test statistics and significance levels.">
+                <figcaption><strong>Figure 7:</strong> Standardized statistical output viewer ready for review and
+                    export.</figcaption>
+            </figure>
+
+            <aside class="callout callout-tip">
+                <h3>Archiving Output</h3>
+                <p>
+                    Preserve your analytical trail by exporting raw outputs outside proprietary software: navigate to
+                    <kbd>File</kbd> &gt; <kbd>Export</kbd> and save reports as PDF, Word, or plain text.
+                </p>
+            </aside>
+        </section>
+
+
+
+        <!--Previous or Next Navigation Footer-->
+        <nav class="module-pagination" aria-label="Module sequence">
+            <a href="research.html" class="pagination-link prev">
+                <span class="pagination-sub">&larr; Previous Active Module</span>
+                <span class="pagination-title">Research Methods &amp; Sourcing</span>
+            </a>
+            <a href="homepage.html" class="pagination-link next">
+                <span class="pagination-sub">Completed &rarr;</span>
+                <span class="pagination-title">Return to Homepage</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Research Paper Toolbox. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
